@@ -2,42 +2,69 @@
 
 # Friends Database App
 
-A React-based authentication and friends management application built with **React, React Router, Context API, Axios, and Local Storage**.
+This project is a **React-based authentication and friends management application** developed as part of a frontend development workflow.
 
-This project includes:
+The main purpose of this project is to practice and demonstrate modern React concepts such as **authentication, protected routes, Context API state management, API requests with Axios, and localStorage usage**.
 
-* User login authentication
-* Protected routes
-* Friends list page
-* Add friend page
-* Persistent login using localStorage
-* Logout and redirect functionality
+The application allows users to securely log in, access protected pages, view a list of friends, and log out while maintaining session persistence.
 
 ---
 
-## Features
+## Project Purpose
 
-### Authentication
+The purpose of this project is to build a simple but scalable authentication flow using React.
 
-* User can login with username and password
-* Login request is sent using Axios
-* User token is stored in localStorage with `s11d2` key
-* Auth state is managed using Context API
+It demonstrates:
 
-### Protected Routes
+* user login flow
+* session persistence
+* route protection
+* API integration
+* state management with Context API
+* reusable component structure
+
+This project is suitable as a **junior frontend developer portfolio project**.
+
+---
+
+## Main Features
+
+### 1. User Authentication
+
+Users can log in with a username and password.
+
+The login request is sent to the backend API using Axios.
+
+After successful login:
+
+* user information is saved
+* token is stored in localStorage
+* user is redirected to Friends List page
+
+The login data is stored using this key:
+
+`s11d2`
+
+---
+
+### 2. Protected Routes
+
+The following routes are protected:
 
 * `/friends`
 * `/friends/add`
 
-These pages are protected and require login.
-
-If the user is not authenticated, they are redirected to:
+If the user is not logged in, access is automatically redirected to:
 
 `/login`
 
-### Friends List
+This is handled using a custom `PrivateRoute` component.
 
-Friends are displayed in the required format:
+---
+
+### 3. Friends List
+
+The application fetches friend data from API and displays it in the required format:
 
 `-name-email`
 
@@ -45,12 +72,19 @@ Example:
 
 `-John Doe-john@example.com`
 
-### Logout
+This format was implemented according to project requirements.
 
-On logout:
+---
+
+### 4. Logout Functionality
+
+When the user clicks logout:
 
 * localStorage is cleared
+* session token is removed
 * user is redirected to login page
+
+This ensures secure session handling.
 
 ---
 
@@ -60,7 +94,7 @@ On logout:
 * React Router DOM
 * Context API
 * Axios
-* JavaScript
+* JavaScript (ES6+)
 * CSS
 * Local Storage
 
@@ -84,20 +118,19 @@ src
 
 ---
 
-## Installation
+## Workflow Explanation
 
-npm install
-npm run dev
+The user first lands on the login page.
 
----
+After entering valid credentials:
 
-## Login Flow
+1. POST request is sent
+2. token is received
+3. token is saved in localStorage
+4. auth state is updated
+5. redirect to friends page happens
 
-1. User enters credentials
-2. Axios sends POST request
-3. Token is saved in localStorage
-4. User is redirected to friends page
-5. Protected routes become accessible
+Protected routes check whether the token exists before rendering the page.
 
 ---
 
@@ -105,3 +138,7 @@ npm run dev
 
 **Caner Yaray**
 Frontend Developer | React Developer
+
+
+
+
